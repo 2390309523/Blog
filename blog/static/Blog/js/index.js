@@ -1,187 +1,124 @@
-var context;
-var arr = new Array();
-var starCount = 800;
-var rains = new Array();
-var rainCount = 20;
-//初始化画布及context
-function init() {
-	//获取canvas
-	var stars = document.getElementById("stars");
-	windowWidth = window.innerWidth; //当前的窗口的高度
-	stars.width = windowWidth;
-	stars.height = window.innerHeight;
-	//获取context
-	context = stars.getContext("2d");
-}
-//创建一个星星对象
-var Star = function() {
-	this.x = windowWidth * Math.random(); //横坐标
-	this.y = 5000 * Math.random(); //纵坐标
-	this.text = "."; //文本
-	this.color = "white"; //颜色
-	//产生随机颜色
-	this.getColor = function() {
-		var _r = Math.random();
-		if (_r < 0.5) {
-			this.color = "#818181";
-		} else {
-			this.color = "white";
+$(function(){
+	var overflow_hidden = $(".overflow-hidden");
+	var returnTop = $("#returnTop")
+	var container = $(".container")
+	var $like = $(".like")
+	var $eye_open = $(".eye-open")
+	var $comments = $(".comments")
+	var $closer = $(".remove")
+	{
+		$("hearder").css({"height":$(window).innerHeight()+"px"});
+	}
+	overflow_hidden.each(function(){
+		$(this).mouseover(function(){
+			$(this).find("span").clearQueue();
+			$(this).find("span").animate({left:"100%"},500,function(){
+				$(this).find("span").css({left:"100%"})
+			});
+		})
+		$(this).mouseout(function(){
+			$(this).find("span").clearQueue();
+			$(this).find("span").animate({left:"250%"},500,function(){
+				$(this).css({"left":"-16px"})	
+			});
+		})
+	})
+	
+	$(window).scroll(function(event){
+		let scroll_top = $(this).scrollTop();
+		if(scroll_top>$("nav").innerHeight()){
+			$("nav").css({"position":"fixed","background-color":"black"});
+		}else{
+			$("nav").css({"position":"absolute","background-color":"rgba(0,0,0,0)"})
+			$("nav").clearQueue()
 		}
-	}
-	//初始化
-	this.init = function() {
-		this.getColor();
-	}
-	//绘制
-	this.draw = function() {
-		context.fillStyle = this.color;
-		context.fillText(this.text, this.x, this.y);
-	}
-}
-//画月亮
-function drawMoon() {
-	var moon = new Image();
-	moon.src = "./images/moon.jpg"
-	context.drawImage(moon, -5, -10);
-}
-//页面加载的时候
-window.onload = function() {
-	init();
-	//画星星
-	for (var i = 0; i < starCount; i++) {
-		var star = new Star();
-		star.init();
-		star.draw();
-		arr.push(star);
-	}
-	//画流星
-	for (var i = 0; i < rainCount; i++) {
-		var rain = new MeteorRain();
-		rain.init();
-		rain.draw();
-		rains.push(rain);
-	}
-	drawMoon(); //绘制月亮
-	playStars(); //绘制闪动的星星
-	playRains(); //绘制流星
-
-}
-//星星闪起来
-function playStars() {
-	for (var n = 0; n < starCount; n++) {
-		arr[n].getColor();
-		arr[n].draw();
-	}
-	setTimeout("playStars()", 100);
-}
-
-/*流星雨开始*/
-var MeteorRain = function() {
-	this.x = -1;
-	this.y = -1;
-	this.length = -1; //长度
-	this.angle = 30; //倾斜角度
-	this.width = -1; //宽度
-	this.height = -1; //高度
-	this.speed = 1; //速度
-	this.offset_x = -1; //横轴移动偏移量
-	this.offset_y = -1; //纵轴移动偏移量
-	this.alpha = 1; //透明度
-	this.color1 = ""; //流星的色彩
-	this.color2 = ""; //流星的色彩
-	/****************初始化函数********************/
-	this.init = function() //初始化
-	{
-		this.getPos();
-		this.alpha = 1; //透明度
-		this.getRandomColor();
-		//最小长度，最大长度
-		var x = Math.random() * 80 + 150;
-		this.length = Math.ceil(x);
-		//         x = Math.random()*10+30;
-		this.angle = 20; //流星倾斜角
-		x = Math.random() + 0.5;
-		this.speed = Math.ceil(x); //流星的速度
-		var cos = Math.cos(this.angle * 3.14 / 180);
-		var sin = Math.sin(this.angle * 3.14 / 180);
-		this.width = this.length * cos; //流星所占宽度
-		this.height = this.length * sin; //流星所占高度
-		this.offset_x = this.speed * cos;
-		this.offset_y = this.speed * sin;
-	}
-	/**************获取随机颜色函数*****************/
-	this.getRandomColor = function() {
-		var a = Math.ceil(255 - 240 * Math.random());
-		//中段颜色
-		this.color1 = "rgba(" + a + "," + a + "," + a + ",1)";
-		//结束颜色
-		this.color2 = "#1b156b";
-	}
-	/***************重新计算流星坐标的函数******************/
-	this.countPos = function() //
-	{
-		//往左下移动,x减少，y增加
-		this.x = this.x - this.offset_x;
-		this.y = this.y + this.offset_y;
-	}
-	/*****************获取随机坐标的函数*****************/
-	this.getPos = function() //
-	{
-		//横坐标200--1200
-		this.x = Math.random() * window.innerWidth; //窗口高度
-		//纵坐标小于600
-		this.y = Math.random() * window.innerHeight; //窗口宽度
-	}
-	/****绘制流星***************************/
-	this.draw = function() //绘制一个流星的函数
-	{
-		context.save();
-		context.beginPath();
-		context.lineWidth = 1; //宽度
-		context.globalAlpha = this.alpha; //设置透明度
-		//创建横向渐变颜色,起点坐标至终点坐标
-		var line = context.createLinearGradient(this.x, this.y,
-			this.x + this.width,
-			this.y - this.height);
-		//分段设置颜色
-		line.addColorStop(0, "white");
-		line.addColorStop(0.3, this.color1);
-		line.addColorStop(0.6, this.color2);
-		context.strokeStyle = line;
-		//起点
-		context.moveTo(this.x, this.y);
-		//终点
-		context.lineTo(this.x + this.width, this.y - this.height);
-		context.closePath();
-		context.stroke();
-		context.restore();
-	}
-	this.move = function() {
-		//清空流星像素
-		var x = this.x + this.width - this.offset_x;
-		var y = this.y - this.height;
-		context.clearRect(x - 3, y - 3, this.offset_x + 5, this.offset_y + 5);
-		//         context.strokeStyle="red";
-		//         context.strokeRect(x,y-1,this.offset_x+1,this.offset_y+1);
-		//重新计算位置，往左下移动
-		this.countPos();
-		//透明度增加
-		this.alpha -= 0.002;
-		//重绘
-		this.draw();
-	}
-}
-//绘制流星
-function playRains() {
-
-	for (var n = 0; n < rainCount; n++) {
-		var rain = rains[n];
-		rain.move(); //移动
-		if (rain.y > window.innerHeight) { //超出界限后重来
-			context.clearRect(rain.x, rain.y - rain.height, rain.width, rain.height);
-			rains[n] = new MeteorRain();
-			rains[n].init();
+		if(scroll_top>$(window).innerHeight()){
+			returnTop.clearQueue()
+			returnTop.animate({right:"100px"},500);
+		}else{
+			returnTop.clearQueue()
+			returnTop.animate({right:"-100%"},500);
 		}
-	}
-	setTimeout("playRains()", 5);
-}
+	});
+	returnTop.click(function(){
+		$("html,body").animate({scrollTop:"0"},500);
+	})
+	// 关闭
+	$closer.click(function(){
+		if(confirm("确定删除？")){
+			$(this).parent().parent().parent().remove()
+		}
+	})
+	// 点赞
+	$like.click(function(){
+		let like_counter_node = $(this).parent().children(".like-counter");
+		let like_id = parseInt($(this).parent().parent().children(".hide-id").html());
+		// $(this).toggleClass("icon-zan-copy-copy")
+		// $(this).toggleClass("icon-dianzan_active")
+		$(this).toggleClass("blue")
+		if($(this).hasClass("blue")){
+			$.ajax({
+				  url: '',
+				  type: 'post',
+				  // 设置的是请求参数
+				  data: { id: like_id, like: '1'},
+				  // 用于设置响应体的类型 注意 跟 data 参数没关系！！！
+				  dataType: 'json',
+				  success: function (res) {
+					// 一旦设置的 dataType 选项，就不再关心 服务端 响应的 Content-Type 了
+					// 客户端会主观认为服务端返回的就是 JSON 格式的字符串
+						like_counter_node.html(parseInt(like_counter_node.html())+1);
+				  }
+			})
+		}else{
+			$.ajax({
+				  url: '',
+				  type: 'post',
+				  // 设置的是请求参数
+				  data: { id: like_id, scan:'0'},
+				  // 用于设置响应体的类型 注意 跟 data 参数没关系！！！
+				  dataType: 'json',
+				  success: function (res) {
+					// 一旦设置的 dataType 选项，就不再关心 服务端 响应的 Content-Type 了
+					// 客户端会主观认为服务端返回的就是 JSON 格式的字符串
+						like_counter_node.html(parseInt(like_counter_node.html())-1);
+				  }
+			})
+		}
+	})
+	// 标记已经浏览
+	$eye_open.click(function(){
+		let scan_counter_node = $(this).parent().children(".eyeopen-counter");
+		let like_id = parseInt($(this).parent().parent().children(".hide-id").html());
+		$(this).toggleClass("blue")
+		if($(this).hasClass("blue")){
+			$.ajax({
+				  url: '',
+				  type: 'post',
+				  // 设置的是请求参数
+				  data: { id: like_id, scan: '1'},
+				  // 用于设置响应体的类型 注意 跟 data 参数没关系！！！
+				  dataType: 'json',
+				  success: function (res) {
+					// 一旦设置的 dataType 选项，就不再关心 服务端 响应的 Content-Type 了
+					// 客户端会主观认为服务端返回的就是 JSON 格式的字符串
+						scan_counter_node.html(parseInt(scan_counter_node.html())+1);
+				  }
+			})
+		}else{
+			$.ajax({
+				  url: '',
+				  type: 'post',
+				  // 设置的是请求参数
+				  data: { id: like_id, scan:'0'},
+				  // 用于设置响应体的类型 注意 跟 data 参数没关系！！！
+				  dataType: 'json',
+				  success: function (res) {
+					// 一旦设置的 dataType 选项，就不再关心 服务端 响应的 Content-Type 了
+					// 客户端会主观认为服务端返回的就是 JSON 格式的字符串
+						scan_counter_node.html(parseInt(scan_counter_node.html())-1);
+				  }
+			})
+		}
+	})
+})

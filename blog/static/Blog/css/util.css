@@ -1,0 +1,38 @@
+.padding-1{padding: 1px;}
+.padding-5{padding: 5px;}
+.padding-10{padding: 10px;}
+.padding-15{padding: 15px;}
+.padding-20{padding: 20px;}
+.padding-25{padding: 25px;}
+.padding-30{padding: 30px;}
+.padding-35{padding: 35px;}
+.padding-40{padding: 40px;}
+.padding-45{padding: 45px;}
+.border-bottom-dash{border-bottom: 2px dashed darkgray;}
+.border-left-dash{border-left: 2px dashed darkgray;}
+.border-right-dash{border-right: 2px dashed darkgray;}
+.border-top-dash{border-top: 2px dashed darkgray;}
+.margin-top-10{margin-top: 10px;}
+.margin-left-10{margin-left: 10px;}
+.margin-right-10{margin-right: 10px;}
+.margin-bottom-10{margin-bottom: 10px;}
+.margin-top-20{margin-top: 20px;}
+.margin-left-20{margin-left: 20px;}
+.margin-right-20{margin-right: 20px;}
+.margin-bottom-20{margin-bottom: 20px;}
+.text-overflow-hide{text-overflow: ellipsis;overflow:hidden;white-space:nowrap}
+.clear-both{float: 0 !important;clear:both;}
+.hidden{display: none;}
+.blue{color:blue;}
+.bg-lightdark{background-color: rgba(200,200,200,.5);}
+.shine-box{border-radius:5px;box-shadow:rgb(255, 255, 255) 0px 0px 18px inset;}
+.normal-a{color:black !important;}
+.normal-a:hover{text-decoration: none;color: blue !important;}
+.bg-black{background-color: #000;}
+.color-white{color:white;}
+.font-size-13{font-size: 13;}
+.font-size-14{font-size: 14;}
+.font-size-15{font-size: 15;}
+.font-size-16{font-size: 16;}
+.font-size-17{font-size: 17;}
+.font-size-18{font-size: 18;}

@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+		<title>虎山行个人博客系统</title>
+		<link rel="shortcut icon" href="img/header_image.jpg" type="image/x-icon">
+		<link rel="stylesheet" href="css/index.css">
+		<link rel="stylesheet" href="sourse/bootstrap-4.1.3-dist/css/bootstrap.min.css"/>
+		<link rel="stylesheet" type="text/css" href="fontLib/aliFontLib/iconfont.css"/>
+		<link rel="stylesheet" type="text/css" href="css/util.css">
+	</head>
+	<body>
+		<header>
+			<nav class="nav navbar" style="position: absolute;">
+				<div class="mark"></div>
+				<!-- 导航栏 -->
+				<div class="container-nav">
+					<div class="row">
+						<div class="col-sm-1 col-md-1 col-lg-1">
+							<a href="" class="nomal-a-white">虎山行</a>
+						</div>
+						<div class="col-sm-5 col-md-5 col-lg-5"></div>
+						<div class="col-sm-1 col-md-1 col-lg-1 overflow-hidden">
+							<a href="" class="nomal-a-white"><span class="iconfont icon-suibi"></span>&nbsp;随笔</a>
+							<span class="border-bottom-slide-in"></span>
+						</div>
+						<div class="col-sm-1 col-md-1 col-lg-1 overflow-hidden">
+							<a href="" class="nomal-a-white"><span class="iconfont icon-search"></span>&nbsp;搜索</a>
+							<span class="border-bottom-slide-in"></span>
+						</div>
+						<div class="col-sm-1 col-md-1 col-lg-1 overflow-hidden">
+							<a href="" class="nomal-a-white"><span class="iconfont icon-blog"></span>&nbsp;博客</a>
+							<span class="border-bottom-slide-in"></span>
+						</div>
+						<div class="col-sm-1 col-md-1 col-lg-1 overflow-hidden">
+							<a href="" class="nomal-a-white"><span class="iconfont icon-msg"></span>&nbsp;联系</a>
+							<span class="border-bottom-slide-in"></span>
+						</div>
+						<div class="col-sm-1 col-md-1 col-lg-1"></div>
+						<div class="col-sm-1 col-md-1 col-lg-1">
+							<div data-toggle="collapse" data-target="#personal_select_block">
+								<img src="img/header_image.jpg" alt="个人中心" class="img-circle img-responsive header_img">
+							</div>
+							<div id="personal_select_block" class="collapse">
+								<div>
+									<ul>
+										<a href="#" class="personal_select_block_item"><li>个人中心</li></a>
+										<a href="#" class="personal_select_block_item"><li>管理员</li></a>
+									</ul>
+								</div> 
+							</div>
+						</div>
+					</div>
+				</div>
+			</nav>
+			<div class="header">
+				<div id="demo" class="carousel slide" data-ride="carousel">
+				 
+				  <!-- 指示符 -->
+				  <ul class="carousel-indicators">
+				    <li data-target="#demo" data-slide-to="0" class="active"></li>
+				    <li data-target="#demo" data-slide-to="1"></li>
+				    <li data-target="#demo" data-slide-to="2"></li>
+				  </ul>
+				 
+				  <!-- 轮播图片 -->
+				  <div class="carousel-inner">
+				    <div class="carousel-item active">
+				      <img src="img/index-scroll.jpg" class="img-responsive">
+					  <div class="carousel-caption">
+					          <h2>技术摘录</h3>
+					          <p>根据本博客可以记录对于技术上的摘要或者心得</p>
+					  </div>
+				    </div>
+				    <div class="carousel-item">
+				      <img src="img/index-scroll2.jpg" class="img-responsive">
+					  <div class="carousel-caption">
+					          <h2>生活随笔</h3>
+					          <p>记录下个人生活中遇到的趣事</p>
+					  </div>
+				    </div>
+				    <div class="carousel-item">
+				      <img src="img/index-scroll3.jpg" class="img-responsive">
+					  <div class="carousel-caption">
+					          <h2>学习笔记</h3>
+					          <p>记录下来学习中的个人笔记</p>
+					  </div>
+				    </div>
+				  </div>
+				 
+				  <!-- 左右切换按钮 -->
+				  <a class="carousel-control-prev" href="#demo" data-slide="prev">
+				    <span class="carousel-control-prev-icon"></span>
+				  </a>
+				  <a class="carousel-control-next" href="#demo" data-slide="next">
+				    <span class="carousel-control-next-icon"></span>
+				  </a>
+				</div>
+			</div>
+		</header>
+		<div class="container">
+			<div class="row margin-bottom-10">
+				<div class="col-sm-12 col-md-6 col-lg-9">
+					<div class="row">
+						<!-- 右边的作者介绍栏 -->
+						<div class="col-sm-12 col-md-6 col-lg-4">
+							<div class="row padding-20">
+								<div class="col-sm-6 text-right">
+									作者：
+								</div>
+								<div class="col-sm-6  text-left">
+									贾某人
+								</div>
+							</div> 
+							<div class="row padding-20">
+								<div class="col-sm-6 text-right">
+									更新时间：
+								</div>
+								<div class="col-sm-6  text-left">
+									<span id="update-time">2020/10/20</span>
+								</div>
+							</div> 
+							<div class="row padding-20">
+								<div class="col-sm-6 text-right">
+									浏览人数：
+								</div>
+								<div class="col-sm-6  text-left">
+									<span id="blog-scan-counter">0</span>
+								</div>
+							</div> 
+						</div>
+						<!-- 中间的博文浏览栏 -->
+						<div class="col-sm-12 col-md-6 col-lg-8">
+							<!-- 博客既简单介绍模板 -->
+							<div class="row padding-20 blog-item">
+								<div class="col-sm-12 col-lg-12 col-md-12">
+									<div class="row title">
+										<div class="col-sm-11 col-lg-11 col-md-11 text-overflow-hide clear-both">
+											<!-- 请求 -->
+											<a href="">这是标题</a>
+										</div>
+										<div class="remove">
+											<span class="iconfont icon-delete"></span>
+										</div>
+									</div>
+									<div class="row content margin-top-10 text-overflow-hide">
+										<div class="col-sm-12 col-lg-12 col-md-12">
+											这是内容
+										</div>
+									</div>
+									<div class="row blog-info margin-top-10">
+										<div class="col-sm-2 col-lg-2 col-md-2 text-center">
+											贾瑞
+										</div>
+										<div class="col-sm-2 col-lg-2 col-md-2 text-center">
+											2020/5/6
+										</div>
+										<div class="col-sm-2 col-lg-2 col-md-2 offset-2 border-right">
+											<span class="iconfont icon-dianzan_active like"></span>
+											<span class="like-counter">0</span>
+										</div>
+										<div class="col-sm-2 col-lg-2 col-md-2 border-right">
+											<span class="iconfont icon-eyesopen eye-open"></span>
+											<span class="eyeopen-counter">0</span>
+										</div>
+										<div class="col-sm-2 col-lg-2 col-md-2">
+											<span class="iconfont icon-icon-test9 comments"></span>
+											<span class="comments-counter">0</span>
+										</div>
+										<span class="hide-id hidden">0</span>
+									</div>
+								</div>
+							</div>
+							
+							<div class="row padding-20 blog-item margin-top-10">
+								<div class="col-sm-12 col-lg-12 col-md-12">
+									<div class="row title">
+										<div class="col-sm-11 col-lg-11 col-md-11 text-overflow-hide clear-both">
+											<!-- 请求 -->
+											<a href="">这是标题</a>
+										</div>
+										<div class="remove">
+											<span class="iconfont icon-delete"></span>
+										</div>
+									</div>
+									<div class="row content margin-top-10 text-overflow-hide">
+										<div class="col-sm-12 col-lg-12 col-md-12">
+											这是内容
+										</div>
+									</div>
+									<div class="row blog-info margin-top-10">
+										<div class="col-sm-2 col-lg-2 col-md-2 text-center">
+											贾瑞
+										</div>
+										<div class="col-sm-2 col-lg-2 col-md-2 text-center">
+											2020/5/6
+										</div>
+										<div class="col-sm-2 col-lg-2 col-md-2 offset-2 border-right">
+											<span class="iconfont icon-dianzan_active like"></span>
+											<span class="like-counter">0</span>
+										</div>
+										<div class="col-sm-2 col-lg-2 col-md-2 border-right">
+											<span class="iconfont icon-eyesopen eye-open"></span>
+											<span class="eyeopen-counter">0</span>
+										</div>
+										<div class="col-sm-2 col-lg-2 col-md-2">
+											<span class="iconfont icon-icon-test9 comment"></span>
+											<span class="comment-counter">0</span>
+										</div>
+										<span class="hide-id hidden">1</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- 中间的博文浏览栏 -->
+				<div class="col-sm-12 col-md-6 col-lg-3">
+					<div class="row">
+						<div class="col-sm-10 col-md-10 col-lg-10 offset-1 shine-box bg-lightdark">
+							<div class="row abstract">摘要</div>
+						</div>
+						<!-- 摘要 -->
+						<div class="col-sm-10 col-md-10 col-lg-10 offset-1 text-overflow-hide margin-top-10">
+							<a href="" class="normal-a"><div class="row">摘要1</div></a>
+						</div>
+					</div>
+					
+					<div class="row margin-top-20">
+						<div class="col-sm-10 col-md-10 col-lg-10 offset-1 shine-box bg-lightdark">
+							<div class="row abstract">最近更新</div>
+						</div>
+						<!-- 最近更新的导航栏 -->
+						<div class="col-sm-10 col-md-10 col-lg-10 offset-1 text-overflow-hide margin-top-10">
+							<a href="" class="normal-a"><div class="row">最近更新1</div></a>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+		<footer class="container-fluid modal-footer bg-black margin-top-20 color-white">
+			<div class="container font-size-14">
+				<div class="row text-center">
+					<div class="col-sm-4 col-lg-4 col-md-4 border-right">
+						<a href="" class="footer-a font-size-14 text-center"><span class="iconfont icon-dianhua"></span>&nbsp;123456</a><br>
+						<a href="" class="footer-a font-size-14 margin-top-10"><span class="iconfont icon-suibi"></span>&nbsp;123456@qq.com</a>
+					</div>
+					<div class="col-sm-4 col-lg-4 col-md-4 border-right">
+						<a href="" class="footer-a font-size-14">这是推荐博文</a>
+					</div>
+					<div class="col-sm-4 col-lg-4 col-md-4"></div>
+				</div>
+				<div class="row margin-top-20">
+					<div class="col-sm-12 col-md-12 col-lg-12 text-center">
+						版权所有©2020 <a href="mailto:2390309523@qq.com?subject=&body=您可以在此输入您的宝贵意见" rel="nofollow" class="footer-a clear-both" >2390309523@qq.com</a> | 来自 <a href="" class="footer-a clear-both">虎山行个人博客系统</a>
+					</div>
+				</div>
+			</div>
+		</footer>
+		<div id="returnTop" title="回到顶部">
+			<span class="iconfont icon-icon-test4"></span>
+		</div>
+	</body>
+	<script type="text/javascript" src="sourse/jquery-3.5.1.js" charset="UTF-8"></script>
+	<script type="text/javascript" src="js/index.js" charset="UTF-8"></script>
+	<script type="text/javascript" src="sourse/bootstrap-4.1.3-dist/js/bootstrap.min.js" charset="UTF-8"></script>
+</html>
